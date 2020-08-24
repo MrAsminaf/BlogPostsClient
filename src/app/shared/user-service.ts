@@ -7,6 +7,6 @@ import { IUser } from '../users/user'
 
 export class UserService {
     getUsers() : IUser[] {
-        return 
+        return;
     }
 }

@@ -1,8 +1,18 @@
-<div *ngFor='let user of userList'>
-    <div>
-        {{user.Id}}
-        {{user.Name}}
-        {{user.SecondName}}
-        {{user.Age}}
-    </div>
-</div>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Second Name</th>
+            <th scope="col">Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let user of userList'>
+            <td>{{user.Id}}</td>
+            <td>{{user.Name}}</td>
+            <td>{{user.SecondName}}</td>
+            <td>{{user.Age}}</td>
+        </tr>
+    </tbody>
+</table>
