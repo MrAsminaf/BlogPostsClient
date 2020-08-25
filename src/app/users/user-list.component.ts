@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { UserService } from '../shared/user-service'
 import { IUser } from './user'
 
@@ -7,19 +7,17 @@ import { IUser } from './user'
     templateUrl: './user-list.component.html'
 })
 
-export class UserListComponent {
-    userList: IUser[] = [
-        {
-            "Id": 1,
-            "Name": "Adam",
-            "SecondName": "Olgrzymek",
-            "Age": 19
-        },
-        {
-            "Id": 2,
-            "Name": "Name2",
-            "SecondName": "SecondName2",
-            "Age": 20
-        }
-    ];
+export class UserListComponent implements OnInit {
+    userList: IUser[];
+
+    constructor(private userSerivce: UserService) { }
+
+    getList(): void {
+        this.userSerivce.getUsers().subscribe(
+            (data: IUser[]) => this.userList = data);
+    }
+
+    ngOnInit(): void {
+        this.getList();
+    }
 }
