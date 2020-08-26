@@ -19,6 +19,13 @@ export class UserService {
         );
     }
 
+    getUser(id: number): Observable<IUser> {
+        return this.http.get<IUser>(this.url + id).pipe(
+            tap(data => console.log(JSON.stringify(data))),
+            catchError(this.processError)
+        );
+    }
+
     private processError(error: HttpErrorResponse) {
         if (error.error instanceof ErrorEvent) {
             console.error('An error occurred:', error.error.message);
